@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping list example</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 8px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>My shopping list</h1>
+
+    <div>
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item">
+      <button>Add item</button>
+    </div>
+
+    <ul>
+
+    </ul>
+
+    <script>
+        const list = document.querySelector("ul");
+        const input = document.querySelector("input");
+        const button = document.querySelector("button");
+
+        button.onclick = function() {
+            let addedItem = input.value;
+            input.value = "";
+
+            /*creates items and stores in variable*/
+            const listItem = document.createElement("li");
+            const listText = document.createElement("span");
+            const listButton = document.createElement("button");
+
+            /* Appends the span and the button as children of the list item. */
+            listItem.appendChild(listText);
+            listText.textContent = addedItem;
+            listItem.appendChild(listButton);
+            listButton.textContent = "Delete";
+            /* Append the list item as a child of the list */
+            list.appendChild(listItem);
+
+            /*Attaches an event handler to the delete button, so that when clicked it will delete the entire list item it is inside.*/
+            listButton.onclick = function(e) {
+                list.removeChild(listItem);
+            }
+
+            input.focus();
+        }
+    </script>
+  </body>
+</html>

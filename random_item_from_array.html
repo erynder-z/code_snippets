@@ -1,0 +1,28 @@
+<html>
+
+    <h1>Random name from Array:  <span id="test1"></span></h1>
+
+<script>
+let names = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert', 'Jada']
+let para = document.createElement('p');
+
+
+
+function chooseName() {
+let randomNumber = Math.round(Math.random() * names.length);
+let choice = names[randomNumber]
+
+document.getElementById("test1").innerHTML = choice;
+}
+
+chooseName();
+
+
+
+section.innerHTML = ' ';
+
+section.appendChild(para);
+
+
+</script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Simple age checker page</title>
+    </head>
+    <!-- Script is loaded before content, so content is not shown before script has run-->
+    <script>
+    "use strict";
+
+        function checkAge(age) {
+            if (age >= 18) {
+                return true;
+            } else {
+                return confirm("Do you have permission from your parents?");
+            }
+        }
+
+        let age = prompt("How old are you?", 18);
+
+        if (checkAge(age)) {
+            alert("Access granted");
+        } else {
+            alert("Access denied");
+            location.href = "/exit.html";
+        }
+    </script>
+
+<body>Welcome</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array Practice</title>
+</head>
+<body>
+  <p><em>Have a look at the JavaScript Console</em> 💁</p>
+  <script>
+  const characters = [
+    {
+        name: 'Luke Skywalker',
+        height: 172,
+        mass: 77,
+        eye_color: 'blue',
+        gender: 'male',
+    },
+    {
+        name: 'Darth Vader',
+        height: 202,
+        mass: 136,
+        eye_color: 'yellow',
+        gender: 'male',
+    },
+    {
+        name: 'Leia Organa',
+        height: 150,
+        mass: 49,
+        eye_color: 'brown',
+        gender: 'female',
+    },
+    {
+        name: 'Anakin Skywalker',
+        height: 188,
+        mass: 84,
+        eye_color: 'blue',
+        gender: 'male',
+    },
+];
+
+// MAP
+
+//     Get an array of all names
+const names = characters.map(character => {
+    return character.name;
+});
+console.log(names);
+
+//     Get an array of all heights
+const heights = characters.map(character => {
+    return character.height;
+});
+console.log(heights);
+
+//     Get an array of objects with just name and height properties
+const minifiedRecords = characters.map(character => ({name: character.name, height: character.height}));
+console.log(minifiedRecords);
+
+//     Get an array of all first names
+const firstNames = characters.map(character => character.name.split(" ")[0]);
+console.log(firstNames);
+
+// REDUCE
+
+//     Get the total mass of all characters
+const totalMass = characters.reduce((accumulator, currentItem) => {
+    return accumulator + currentItem.mass;
+}, 0);
+console.log(totalMass);
+
+//     Get the total height of all characters
+const totalHeight = characters.reduce((accumulator, currentItem) => {
+    return accumulator + currentItem.height;
+}, 0);
+console.log(totalHeight);
+
+//     Get the total number of characters in all the character names
+const totalNameCharacters = characters.reduce((accumulator, currentItem) => accumulator + currentItem.name.length, 0);
+console.log(totalNameCharacters);
+
+//     Get the total number of characters by eye color (hint. a map of eye color to count)
+const charactersByEyeColor = characters.reduce((accumulator, currentItem) => {
+    const color = currentItem.eye_color;
+    if (accumulator[color]) {
+        accumulator[color] = accumulator[currentItem.eye_color] + 1
+    } else {
+        accumulator[color] = 1;
+    }
+    return accumulator;
+}, {});
+console.log(charactersByEyeColor);
+
+// FILTER
+
+//     Get characters with mass greater than 100
+const greaterThan100Characters = characters.filter((character) => {
+    return character.mass > 100;
+});
+console.log(greaterThan100Characters);
+
+//     Get characters with height less than 200
+const shorterCharacters = characters.filter((character) => {
+    return character.height < 200;
+});
+console.log(shorterCharacters);
+
+//     Get all male characters
+const maleCharacters = characters.filter((character) => {
+    return character.gender === "male";
+});
+console.log(maleCharacters);
+
+//     Get all female characters
+const femaleCharacters = characters.filter((character) => {
+    return character.gender === "female";
+});
+console.log(femaleCharacters);
+
+// SORT
+
+//     Sort by name
+const byName = characters.sort((a,b) => {
+    if (a.name < b.name) return -1;
+    return 1; 
+});
+console.log(byName);
+
+//     Sort by mass
+const byMass = characters.sort((a,b) => {
+    return b.mass - a.mass;
+});
+console.log(byMass);
+
+
+//     Sort by height
+const byHeight = characters.sort((a,b) => {
+    return b.height - a.height;
+});
+console.log(byHeight);
+
+//     Sort by gender
+const byGender = characters.sort((a,b) => {
+    if (a.gender === "female") return -1;
+    return 1;
+});
+console.log(byGender);
+
+
+// EVERY
+
+//     Does every character have blue eyes?
+const allBlueEyes = characters.every((character) => {
+    return character.eye_color === "blue";
+});
+console.log(allBlueEyes);
+
+//     Does every character have mass more than 40?
+const allTaller = characters.every((character) => {
+    return character.mass > 40;
+});
+console.log(allTaller);
+
+//     Is every character shorter than 200?
+const allShorter = characters.every((character) => {
+    return character.height < 200;
+});
+console.log(allShorter);
+
+//     Is every character male?
+const allMale = characters.every((character) => {
+    return character.gender === "male";
+});
+console.log(allMale);
+
+// SOME
+
+//     Is there at least one male character?
+const isMale = characters.some((character) => {
+    return character.gender === "male";
+});
+console.log(isMale);
+
+//     Is there at least one character with blue eyes?
+const hasBlueEyes = characters.some((character) => {
+    return character.eye_color === "blue";
+});
+console.log(hasBlueEyes);
+
+//     Is there at least one character taller than 200?
+const isTall = characters.some((character) => {
+    return character.height > 200;
+});
+console.log(isTall);
+
+//     Is there at least one character that has mass less than 50?
+const isLight = characters.some((character) => {
+    return character.mass < 50;
+});
+console.log(isLight);
+
+  </script>
+</body>
+</html>
